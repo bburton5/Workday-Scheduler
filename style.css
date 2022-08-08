@@ -4,12 +4,13 @@ body {
   line-height: 1;
 }
 
-textarea {
+/* used to just be textarea */
+textarea,
+.form-control {
   background: transparent;
   border: none;
   resize: none;
   color: #000000;
-  border-left: 1px solid black;
   padding: 10px;
 }
 
@@ -74,7 +75,8 @@ tr {
   justify-content: center;
 }
 
-.saveBtn i:hover {
+/* used to be .saveBtn i:hover */
+.td2:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }

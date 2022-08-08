@@ -22,6 +22,7 @@ for (var y = 0; y < saveButton.length; y++) {
   saveButton[y].textContent = "💾";
 }
 
+//adds times for the day in the first column
 for (var z = 0; z < 10; z++) {
   var firstColumn = document.getElementsByClassName("td0");
   var times = [
@@ -38,3 +39,16 @@ for (var z = 0; z < 10; z++) {
   ];
   firstColumn[z].textContent = times[z];
 }
+
+//adds a div for the space where person will input their event will go
+var eventColumn = document.getElementsByClassName("td1");
+$(document).click(function (event) {
+  var clickedElement = event.target;
+  if (clickedElement.classList.contains("td1")) {
+    var textDiv = document.createElement("textarea");
+    clickedElement.appendChild(textDiv);
+    textDiv.classList.add("form-control");
+  } else {
+    return;
+  }
+});
