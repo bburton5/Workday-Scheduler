@@ -40,15 +40,33 @@ for (var z = 0; z < 10; z++) {
   firstColumn[z].textContent = times[z];
 }
 
-//adds a div for the space where person will input their event will go
+//adds a textarea where person will input their event
 var eventColumn = document.getElementsByClassName("td1");
 $(document).click(function (event) {
   var clickedElement = event.target;
   if (clickedElement.classList.contains("td1")) {
-    var textDiv = document.createElement("textarea");
+    var textDiv = document.createElement("input");
     clickedElement.appendChild(textDiv);
     textDiv.classList.add("form-control");
   } else {
     return;
+  }
+});
+
+var saveEvent = document.getElementsByClassName("td2");
+var inputText = document.getElementsByClassName("form-control");
+
+$(document).click(function (event) {
+  var clickedSaveButton = event.target;
+  var allEvents = JSON.parse(localStorage.getItem("allEvents")) || [];
+  if (clickedSaveButton.classList.contains("td2")) {
+    for (var a = 0; a < inputText.length; a++) {
+      var newEvent = inputText[a].value;
+      var addedEvents = {
+        events: newEvent,
+      };
+      allEvents.push(addedEvents);
+    }
+    console.log(allEvents);
   }
 });
