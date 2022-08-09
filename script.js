@@ -53,20 +53,27 @@ $(document).click(function (event) {
   }
 });
 
-var saveEvent = document.getElementsByClassName("td2");
+//saves and grabs events from local storage
 var inputText = document.getElementsByClassName("form-control");
 
 $(document).click(function (event) {
   var clickedSaveButton = event.target;
-  var allEvents = JSON.parse(localStorage.getItem("allEvents")) || [];
+  var allEvents = JSON.parse(localStorage.getItem("eventObject"));
+  if (allEvents === null) {
+    allEvents = [];
+  } else {
+    allEvents = JSON.parse(localStorage.getItem("eventObject")).events;
+  }
   if (clickedSaveButton.classList.contains("td2")) {
     for (var a = 0; a < inputText.length; a++) {
       var newEvent = inputText[a].value;
-      var addedEvents = {
-        events: newEvent,
-      };
-      allEvents.push(addedEvents);
+      console.log(allEvents);
+      allEvents.push(newEvent);
     }
     console.log(allEvents);
+    var eventObject = {
+      events: allEvents,
+    };
+    localStorage.setItem("eventObject", JSON.stringify(eventObject));
   }
 });
