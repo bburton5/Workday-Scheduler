@@ -55,25 +55,24 @@ $(document).click(function (event) {
 
 //saves and grabs events from local storage
 var inputText = document.getElementsByClassName("form-control");
-
-$(document).click(function (event) {
-  var clickedSaveButton = event.target;
+$(".td1").on("dblclick", function () {
   var allEvents = JSON.parse(localStorage.getItem("eventObject"));
   if (allEvents === null) {
     allEvents = [];
   } else {
     allEvents = JSON.parse(localStorage.getItem("eventObject")).events;
   }
-  if (clickedSaveButton.classList.contains("td2")) {
+  console.log(allEvents);
+  $(".td2").on("click", function () {
     for (var a = 0; a < inputText.length; a++) {
       var newEvent = inputText[a].value;
-      console.log(allEvents);
-      allEvents.push(newEvent);
     }
+    console.log(allEvents);
+    allEvents.push(newEvent);
     console.log(allEvents);
     var eventObject = {
       events: allEvents,
     };
     localStorage.setItem("eventObject", JSON.stringify(eventObject));
-  }
+  });
 });
